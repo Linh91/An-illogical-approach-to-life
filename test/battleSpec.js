@@ -29,6 +29,6 @@ describe('battle', function(){
 
   it('players can attack each other', function(){
     battle.attack(battle.firstPlayer, battle.secondPlayer)
-    expect(battle.secondPlayer.hp).toEqual(11)
+    expect(battle.secondPlayer.hp).toEqual(14)
   })
 })

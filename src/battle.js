@@ -9,5 +9,5 @@ function Battle(player1, player2){
 }
 
 Battle.prototype.attack = function(player1, player2) {
-  player2.hp-= player1.attack
+  player2.hp-= (player1.attack-(player2.defence/3).toFixed(0))
 };
