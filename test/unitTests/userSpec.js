@@ -1,5 +1,5 @@
 process.env.NODE_ENV = 'test'
-var User = require('../src/models/User');
+var User = require('../../src/models/User');
 var assert = require('assert');
 var mongoose = require('mongoose');
 

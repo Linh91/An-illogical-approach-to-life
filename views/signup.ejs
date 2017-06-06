@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+
+<body>
+  <h2>Sign Up or Log In</h2>
+  <div>
+    Sign up
+    <form action="/signup" id="signupform" class="signup-form" method="post">
+      <input class="signup-input" type="email" name="email" placeholder="Email address"><br>
+      <input class="signup-input" type="password" name="password" placeholder="Password"><br>
+      <input class="signup-input" type="password" name="passwordConfirmation" placeholder="Confirm your password"><br>
+      <input class="btn" type="submit" name="submit" value="Submit">
+    </form>
+  </div>
+  <div>
+    Log In
+    <form action="/login" id="signupform" class="signup-form" method="post">
+      <input class="signup-input" type="email" name="login_email" placeholder="Email address"><br>
+      <input class="signup-input" type="password" name="login_password" placeholder="Password"><br>
+      <input class="btn" type="submit" name="login" value="Log In">
+    </form>
+  </div>
+
+</body>
+</html>
