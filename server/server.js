@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const path = require('path')
 var User = require('../src/models/User');
 var Character = require('../src/models/Character');
+var Battle = require('../src/models/Battle');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');

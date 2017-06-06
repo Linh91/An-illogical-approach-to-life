@@ -1,27 +1,26 @@
-describe('battle', function(){
+var Battle = require('../../src/models/Battle');
 
-  beforeEach(function(){
-    var player1 = {
-      name: "Roy the Bus Driver",
-      xp: 0,
-      attack: 9,
-      defence: 1,
-      level: 1,
-      hp: 20
-    };
+describe('Battle', function(){
 
-    var player2 = {
-      name: "Bob the Builder",
-      xp: 0,
-      attack: 2,
-      defence: 8,
-      level: 1,
-      hp: 20
-    };
+  var player1 = {
+    name: "Roy the Bus Driver",
+    xp: 0,
+    attack: 9,
+    defence: 1,
+    level: 1,
+    hp: 20
+  };
 
-    battle = new Battle(player1, player2);
+  var player2 = {
+    name: "Bob the Builder",
+    xp: 0,
+    attack: 2,
+    defence: 8,
+    level: 1,
+    hp: 20
+  };
 
-  })
+  var battle = new Battle(player1, player2);
 
   it('two players can enter a battle', function(){
     expect(battle.firstPlayer.name).toEqual("Roy the Bus Driver")
@@ -33,7 +32,8 @@ describe('battle', function(){
   })
 
   it('a player will die when he has no more health', function(){
-    battle.secondPlayer.hp = 3
+    battle.firstPlayer.hp = 0
+    battle.secondPlayer.hp = 6
     battle.attack(battle.firstPlayer, battle.secondPlayer)
     expect(battle.gameOver).toEqual(true)
   })

@@ -11,7 +11,6 @@ var characterSchema = new Schema({
   xp: { type: Number, default: 0 },
   attack: { type: Number, default: 0 },
   defence: { type: Number, default: 0 },
-  level: { type: Number, default: 1 }
   level: { type: Number, default: 1 },
   avatar: String
 
