@@ -31,4 +31,10 @@ describe('battle', function(){
     battle.attack(battle.firstPlayer, battle.secondPlayer)
     expect(battle.secondPlayer.hp).toEqual(14)
   })
+
+  it('a player will die when he has no more health', function(){
+    battle.secondPlayer.hp = 3
+    battle.attack(battle.firstPlayer, battle.secondPlayer)
+    expect(battle.gameOver).toEqual(true)
+  })
 })
