@@ -6,7 +6,8 @@ describe('battle', function(){
       xp: 0,
       attack: 9,
       defence: 1,
-      level: 1
+      level: 1,
+      hp: 20
     };
 
     var player2 = {
@@ -14,7 +15,8 @@ describe('battle', function(){
       xp: 0,
       attack: 2,
       defence: 8,
-      level: 1
+      level: 1,
+      hp: 20
     };
 
     battle = new Battle(player1, player2);
@@ -25,7 +27,8 @@ describe('battle', function(){
     expect(battle.firstPlayer.name).toEqual("Roy the Bus Driver")
   })
 
-  // it('players can attack each other', function(){
-  //
-  // })
+  it('players can attack each other', function(){
+    battle.attack(battle.firstPlayer, battle.secondPlayer)
+    expect(battle.secondPlayer.hp).toEqual(11)
+  })
 })
