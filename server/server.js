@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
 var flash = require('connect-flash');
+var Enemy = require('../src/models/Enemy');
 
 const app = express();
 
@@ -92,7 +93,7 @@ app.post('/create', function(req, res){
    hero.userId = sess.userId
    hero.avatar = 'someshit here';
    hero.save()
-   res.redirect('character/list')
+   res.redirect('/character')
 })
 
 app.get('/signout', function(req, res) {
@@ -101,8 +102,10 @@ app.get('/signout', function(req, res) {
 })
 
 app.get('/battle', function(req, res){
-  Character.find({}, function(err, characters) {
-    battle = new Battle(characters[0], characters[0]);
+  sess = req.session
+  enemy = new Enemy();
+  Character.find({ }, function(err, characters) {
+    battle = new Battle(characters[0], enemy);
     res.render('battle/battle')
   })
 })
