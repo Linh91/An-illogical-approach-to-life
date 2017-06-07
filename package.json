@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "angular": "^1.6.4",
     "axios": "^0.16.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
@@ -14,6 +15,8 @@
     "express-session": "^1.15.3",
     "foreman": "^2.0.0",
     "jasmine-node": "^1.14.5",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.0.0",
     "marked": "^0.3.6",
     "mocha": "^3.4.2",
     "mongo": "^0.1.0",
