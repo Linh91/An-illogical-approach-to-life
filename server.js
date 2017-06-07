@@ -13,6 +13,7 @@ var flash = require('connect-flash');
 var mongoose = require('mongoose');
 
 
+var Enemy = require('./src/models/Enemy');
 
 const app = express();
 var dbUrl;
@@ -37,7 +38,7 @@ app.use(session({
 }));
 
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/public/views'));
+app.use(express.static(__dirname + '/views'));
 
 app.get('/', function (req, res) {
   res.render('signup', {
@@ -91,7 +92,7 @@ app.get('/character/new', function(req, res) {
 app.get('/character', function(req, res) {
   Character.find({ userId : sess.userId }, function(err, characters) {
     if (characters.length == 0 ) {
-      res.redirect('character/new')
+      res.redirect('/character/new')
     } else {
       res.render('character/list')
     }
@@ -106,7 +107,7 @@ app.post('/create', function(req, res){
    hero.userId = sess.userId
    hero.avatar = 'someshit here';
    hero.save()
-   res.redirect('character/list')
+   res.redirect('/character')
 })
 
 app.get('/signout', function(req, res) {
@@ -115,9 +116,10 @@ app.get('/signout', function(req, res) {
 })
 
 app.get('/battle', function(req, res){
-  Character.find({}, function(err, characters) {
-    var testCharacter = characters[0]
-    battle = new Battle(testCharacter);
+  sess = req.session
+  enemy = new Enemy();
+  Character.find({ }, function(err, characters) {
+    battle = new Battle(characters[0], enemy);
     res.render('battle/battle')
   })
 })

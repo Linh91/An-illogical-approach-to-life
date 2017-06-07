@@ -11,8 +11,8 @@ var characterSchema = new Schema({
   attack: { type: Number, default: 0 },
   defence: { type: Number, default: 0 },
   level: { type: Number, default: 1 },
-  avatar: String
-
+  avatar: String,
+  hp: { type: Number, default: 100 }
 });
 
 var Character = mongoose.model('Character', characterSchema);
