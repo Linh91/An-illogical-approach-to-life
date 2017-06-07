@@ -84,6 +84,17 @@ app.get('/character', function(req, res) {
   })
 })
 
+app.post('/create', function(req, res){
+   var hero = new Character();
+   hero.name = req.body.name
+   hero.attack = req.body.attack
+   hero.defence = req.body.defence
+   hero.userId = sess.userId
+   hero.avatar = 'someshit here';
+   hero.save()
+   res.redirect('character/list')
+})
+
 app.get('/signout', function(req, res) {
   req.session = undefined
   res.redirect('/')
@@ -98,9 +109,3 @@ app.get('/battle', function(req, res){
 })
 
 module.exports = app;
-// app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
-  // res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
-  // app.use(bodyParser.urlencoded({ extended: true }));
-  // app.use(bodyParser.json());
-// app.use(express.static(path.resolve(__dirname, '..', 'public')));
-  // res.send('hello')
