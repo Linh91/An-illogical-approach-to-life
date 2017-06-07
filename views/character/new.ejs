@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="../src/models/Character.js"></script>
-  <script src="character.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <header>
   <%- partial('partials/signOut') %>
 </header>
-<body ng-app="createCharacter" ng-controller="character">
+<body>
 <h2>Create a new character</h2>
- <form>
+ <form action="/create" method="post">
   Name:<input type="text" name="name">
   <br>
   Attack:<input type="number" name="attack">
   <br>
   Defence:<input type="number" name="defence">
   <br>
-  <input ng-click="create()" type="submit" value="submit">
+  <input type="submit" value="submit">
 </form>
 </body>
 </html>

@@ -84,6 +84,17 @@ app.get('/character', function(req, res) {
   })
 })
 
+app.post('/create', function(req, res){
+   var hero = new Character();
+   hero.name = req.body.name
+   hero.attack = req.body.attack
+   hero.defence = req.body.defence
+   hero.userId = sess.userId
+   hero.avatar = 'someshit here';
+   hero.save()
+   res.redirect('character/list')
+})
+
 app.get('/signout', function(req, res) {
   req.session = undefined
   res.redirect('/')
