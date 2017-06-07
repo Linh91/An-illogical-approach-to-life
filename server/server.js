@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
 var flash = require('connect-flash');
-var characterView = require('../src/models/listView')
+characterView = require('../src/models/listView')
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use(session({
 }));
 
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/public/views'));
+app.use(express.static(__dirname + 'public'));
 
 app.get('/', function (req, res) {
   res.render('signup', {

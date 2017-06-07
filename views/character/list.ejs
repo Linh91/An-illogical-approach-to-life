@@ -8,10 +8,21 @@
   </head>
   <body>
     <h1> Character List </h1>
-      <%=characterView(characterList, 1)%>
+      <% id = 0 %>
+      <%character = characterView(characterList, id)%>
+      <li><%=character.name%></li>
+      <li>atk:<%=character.attack%></li>
+      <li>def:<%=character.defence%></li>
+      <li>lvl:<%=character.level%></li>
+
+      <button onClick="id--">Previous Char</button>
+      <button id="next">Next Char</button>
 
     <form action="/character/new" method="get">
       <input type="submit" value="New Char">
     </form>
+    <script>
+
+    </script>
   </body>
 </html>
