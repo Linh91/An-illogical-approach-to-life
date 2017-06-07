@@ -91,8 +91,7 @@ app.get('/signout', function(req, res) {
 
 app.get('/battle', function(req, res){
   Character.find({}, function(err, characters) {
-    var testCharacter = characters[0]
-    battle = new Battle(testCharacter);
+    battle = new Battle(characters[0], characters[0]);
     res.render('battle/battle')
   })
 })
