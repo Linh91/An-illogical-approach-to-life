@@ -2,6 +2,7 @@ const express = require('express');
 const partials = require('express-partials');
 const morgan = require('morgan');
 const path = require('path')
+var database = require('../config/database.js')
 var User = require('../src/models/User');
 var Character = require('../src/models/Character');
 var Battle = require('../src/models/Battle');
@@ -9,8 +10,21 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
 var flash = require('connect-flash');
+var mongoose = require('mongoose');
+
+
 
 const app = express();
+var dbUrl;
+
+if(process.env.NODE_ENV == 'test'){
+  mongoose.connect(database.test);
+  dbUrl = database.test;
+}
+else{
+  mongoose.connect(database.dev);
+  dbUrl = database.dev;
+}
 
 app.use(partials());
 app.use(bodyParser.urlencoded({ extended: false }));

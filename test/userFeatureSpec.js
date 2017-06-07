@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'test'
 const Browser = require('zombie');
 var expect = require('chai').expect
 var assert = require('assert');
@@ -9,7 +10,7 @@ describe('Sign Up', function() {
   const browser = new Browser();
   before(function(done) {
     User.remove({}, function(err) {
-      browser.visit('http://localhost:9000/', done);
+      browser.visit('http://localhost:3000/', done);
     })
   })
 
@@ -29,7 +30,7 @@ describe('Log in', function() {
   const browser = new Browser();
 
   before(function(done) {
-    browser.visit('http://localhost:9000/', done);
+    browser.visit('http://localhost:3000/', done);
   })
 
   it('user can log in but has no character yet', function(done){
