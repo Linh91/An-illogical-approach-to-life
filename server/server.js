@@ -2,15 +2,13 @@ const express = require('express');
 const partials = require('express-partials');
 const morgan = require('morgan');
 const path = require('path')
-var User = require('./src/models/User');
-var Character = require('./src/models/Character');
-var Battle = require('./src/models/Battle');
+var User = require('../src/models/User');
+var Character = require('../src/models/Character');
+var Battle = require('../src/models/Battle');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
 var flash = require('connect-flash');
-var Enemy = require('./src/models/Enemy');
-
 
 const app = express();
 
@@ -25,8 +23,7 @@ app.use(session({
 }));
 
 app.set('view engine', 'ejs');
-
-app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/public/views'));
 
 app.get('/', function (req, res) {
   res.render('signup', {
@@ -80,9 +77,8 @@ app.get('/character/new', function(req, res) {
 app.get('/character', function(req, res) {
   Character.find({ userId : sess.userId }, function(err, characters) {
     if (characters.length == 0 ) {
-      res.redirect('/character/new')
+      res.redirect('character/new')
     } else {
-      characterList = characters[0]
       res.render('character/list')
     }
   })
@@ -96,7 +92,7 @@ app.post('/create', function(req, res){
    hero.userId = sess.userId
    hero.avatar = 'someshit here';
    hero.save()
-   res.redirect('character')
+   res.redirect('character/list')
 })
 
 app.get('/signout', function(req, res) {
@@ -105,18 +101,11 @@ app.get('/signout', function(req, res) {
 })
 
 app.get('/battle', function(req, res){
-  sess = req.session
-  enemy = new Enemy();
-  Character.find({ }, function(err, characters) {
-    battle = new Battle(characters[0], enemy);
+  Character.find({}, function(err, characters) {
+    var testCharacter = characters[0]
+    battle = new Battle(testCharacter);
     res.render('battle/battle')
   })
 })
-
-const PORT = process.env.PORT || 9000;
-
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
-});
 
 module.exports = app;

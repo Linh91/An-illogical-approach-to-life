@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-<<<<<<< HEAD
-      <script src="character.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-=======
->>>>>>> 4532d9ab05c1b370c2436d1c61fe070ff336e092
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
-<<<<<<< HEAD
-    <h1> Character List </h1>
-      <% id = 0 %>
-      <%character = characterView(characterList, id)%>
-      <li><%=character.name%></li>
-      <li>atk:<%=character.attack%></li>
-      <li>def:<%=character.defence%></li>
-      <li>lvl:<%=character.level%></li>
+  <body ng-app="characterCreation" ng-controller="character">
 
-      <button onClick="id--">Previous Char</button>
-      <button id="next">Next Char</button>
+    <h1> Character List </h1>
+
+    {{id = <%=characterList%>}}
+
+
+
 
     <form action="/character/new" method="get">
       <input type="submit" value="New Char">
@@ -28,8 +21,8 @@
     <script>
 
     </script>
-=======
-    LIST
->>>>>>> 4532d9ab05c1b370c2436d1c61fe070ff336e092
+    <script src="../app.js"></script>
+    <script src="../listView.js"></script>
+    <script src="../../src/models/character"></script>
   </body>
 </html>
