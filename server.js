@@ -78,7 +78,7 @@ app.get('/character/new', function(req, res) {
 app.get('/character', function(req, res) {
   Character.find({ userId : sess.userId }, function(err, characters) {
     if (characters.length == 0 ) {
-      res.redirect('character/new')
+      res.redirect('/character/new')
     } else {
       res.render('character/list')
     }
