@@ -79,6 +79,7 @@ app.get('/character', function(req, res) {
     if (characters.length == 0 ) {
       res.redirect('character/new')
     } else {
+      characterList = characters
       res.render('character/list')
     }
   })
@@ -92,7 +93,7 @@ app.post('/create', function(req, res){
    hero.userId = sess.userId
    hero.avatar = 'someshit here';
    hero.save()
-   res.redirect('character/list')
+   res.redirect('character')
 })
 
 app.get('/signout', function(req, res) {
