@@ -3,7 +3,7 @@ const Browser = require('zombie');
 var expect = require('chai').expect
 var assert = require('assert');
 
-var app = require('../server/index.js')
+var app = require('../server.js')
 var User = require('../src/models/User');
 
 describe('Sign Up', function() {

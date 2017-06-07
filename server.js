@@ -2,10 +2,10 @@ const express = require('express');
 const partials = require('express-partials');
 const morgan = require('morgan');
 const path = require('path')
-var database = require('../config/database.js')
-var User = require('../src/models/User');
-var Character = require('../src/models/Character');
-var Battle = require('../src/models/Battle');
+var database = require('./config/database.js')
+var User = require('./src/models/User');
+var Character = require('./src/models/Character');
+var Battle = require('./src/models/Battle');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
@@ -121,5 +121,18 @@ app.get('/battle', function(req, res){
     res.render('battle/battle')
   })
 })
+
+var PORT;
+
+if(process.env.NODE_ENV == 'test'){
+  PORT = 3000
+}
+else{
+  PORT = 9000
+}
+
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}!`);
+});
 
 module.exports = app;
