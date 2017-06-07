@@ -2,14 +2,14 @@ const express = require('express');
 const partials = require('express-partials');
 const morgan = require('morgan');
 const path = require('path')
-var User = require('../src/models/User');
-var Character = require('../src/models/Character');
-var Battle = require('../src/models/Battle');
+var User = require('./src/models/User');
+var Character = require('./src/models/Character');
+var Battle = require('./src/models/Battle');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
 var flash = require('connect-flash');
-var Enemy = require('../src/models/Enemy');
+var Enemy = require('./src/models/Enemy');
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use(session({
 }));
 
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/public/views'));
+app.use(express.static(__dirname + '/views'));
 
 app.get('/', function (req, res) {
   res.render('signup', {
@@ -109,5 +109,11 @@ app.get('/battle', function(req, res){
     res.render('battle/battle')
   })
 })
+
+const PORT = process.env.PORT || 9000;
+
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}!`);
+});
 
 module.exports = app;

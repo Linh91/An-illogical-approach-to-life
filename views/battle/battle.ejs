@@ -3,10 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-
+    <link rel="stylesheet" href="../animation.css">
   </head>
   <body>
     <h2>BATTLE</h2>
-    <p><%= battle.secondPlayer.name %></p>
+    <table>
+    <tr>
+      <th><img src="/assets/test_sprite.png" alt="hero" class="character"></th>
+      <th width="150" rowspan="3"></th>
+      <th><img src="/assets/baddie_sprite.png" alt="enemy" class="enemy"></th>
+    </tr>
+    <tr>
+      <th><div class="shadow"></div>
+      </th>
+      <th><div class="shadow right"></div>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <p><%= battle.firstPlayer.name %></p>
+        <p>HP: <%= battle.firstPlayer.hp %></p>
+      </th>
+      <th>
+        <p><%= battle.firstPlayer.name %></p>
+        <p>HP: <%= battle.firstPlayer.hp %></p>
+      </th>
+    </tr>
+
+  </table>
   </body>
 </html>
