@@ -1,8 +1,4 @@
-
-    var $ = require("jquery");
-
-
-var Battle = function(player1, player2, window){
+var Battle = function(player1, player2){
   this.firstPlayer = player1
   this.secondPlayer = player2
   this.gameOver = false
@@ -21,6 +17,5 @@ Battle.prototype.checkForEndGame = function(){
     this.gameOver = true; this.outcome = 'lost'
   }
 }
-
 
 module.exports = Battle;
