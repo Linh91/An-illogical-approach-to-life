@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
 var flash = require('connect-flash');
+var characterView = require('../src/models/listView')
 
 const app = express();
 
