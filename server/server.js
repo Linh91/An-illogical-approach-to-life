@@ -89,6 +89,14 @@ app.get('/signout', function(req, res) {
   res.redirect('/')
 })
 
+app.get('/battle', function(req, res){
+  Character.find({}, function(err, characters) {
+    var testCharacter = characters[0]
+    battle = new Battle(testCharacter);
+    res.render('battle/battle')
+  })
+})
+
 module.exports = app;
 // app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
   // res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
