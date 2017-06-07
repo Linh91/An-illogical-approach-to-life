@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="../src/models/Character.js"></script>
+  <script src="character.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <header>
   <%- partial('partials/signOut') %>
 </header>
-<body>
+<body ng-app="createCharacter" ng-controller="character">
 <h2>Create a new character</h2>
  <form>
   Name:<input type="text" name="name">
@@ -14,7 +17,7 @@
   <br>
   Defence:<input type="number" name="defence">
   <br>
-  <input type="submit" value="submit">
+  <input ng-click="create()" type="submit" value="submit">
 </form>
 </body>
 </html>
