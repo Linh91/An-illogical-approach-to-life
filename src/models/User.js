@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
+var db = require('../../config/database.js')
 var Schema = mongoose.Schema;
 
-var testDB = "mongodb://localhost/RPGDB"
-
-mongoose.connect(testDB)
+mongoose.connect(db.test)
 
 var userSchema = new Schema({
   email: { type: String, unique : true, required : true },
