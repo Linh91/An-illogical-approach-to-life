@@ -10,6 +10,7 @@ const App = () => {
   return(
     <BrowserRouter>
       <div>
+      <h1> its alive </h1>
       <Route exact path="/" render ={() =>(
         <div>
           <SignIn/>
