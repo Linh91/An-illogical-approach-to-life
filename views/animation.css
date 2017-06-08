@@ -17,6 +17,14 @@
   -webkit-animation:villainbounce 1s infinite;
 }
 
+.player2 {
+  display: none;
+}
+
+.xplayer1 {
+  display: none;
+}
+
 @-webkit-keyframes herobounce {
   0%       { bottom:3px; }
   25%, 75% { bottom:10px; }

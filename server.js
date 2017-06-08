@@ -7,6 +7,7 @@ var User = require('./src/models/User');
 var EndGame = require('./src/models/EndGame');
 var Rewards = require('./src/models/Rewards');
 var Attack = require('./src/models/Attack');
+var EnemyAttack = require('./src/models/EnemyAttack');
 var Heal = require('./src/models/Heal');
 var Character = require('./src/models/Character');
 var Battle = require('./src/models/Battle');
@@ -125,7 +126,6 @@ app.get('/map', function(req, res){
 
 app.post('/create', function(req, res){
    var hero = new Character();
-   console.log(hero)
    hero.name = req.body.name
    hero.attack = req.body.attack
    hero.defence = req.body.defence
@@ -143,7 +143,6 @@ app.get('/signout', function(req, res) {
 app.get('/new-battle', function(req, res){
   secondPlayer = new Enemy();
   sess.battle = new Battle(sess.hero, secondPlayer)
-  console.log(sess.battle)
   res.redirect('/battle')
 })
 
@@ -162,7 +161,7 @@ app.get('/battle', function(req, res){
 })
 
 app.post('/attack', function(req, res) {
-  var attack = new Attack(sess.battle.firstPlayer, sess.battle.secondPlayer);
+  var attack = new Attack(sess.battle);
   sess.lastGo = attack.outcome
   res.redirect('/battle')
 })
@@ -170,6 +169,12 @@ app.post('/attack', function(req, res) {
 app.post('/heal', function(req, res) {
   var heal = new Heal(sess.battle.firstPlayer);
   sess.lastGo = heal.outcome
+  res.redirect('/battle')
+})
+
+app.post('/enemy-turn', function(req, res) {
+  var enemyTurn = new EnemyAttack(sess.battle);
+  sess.lastGo = enemyTurn.outcome
   res.redirect('/battle')
 })
 
