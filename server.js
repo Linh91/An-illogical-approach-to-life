@@ -112,9 +112,15 @@ app.get('/databaseQuery', function(req, res){
   });
 });
 
+app.get('/choose-character', function(req, res){
+  Character.find({ _id : req.query.id }, function(err, character) {
+    sess.hero = character[0]
+    res.redirect('/map')
+  })
+})
+
 app.get('/map', function(req, res){
-  sess.currentChar = req.query.id
-  res.render('battleMap')
+    res.render('battleMap')
 })
 
 app.post('/create', function(req, res){
@@ -135,38 +141,35 @@ app.get('/signout', function(req, res) {
 })
 
 app.get('/new-battle', function(req, res){
-  sess = req.session
-  enemy = new Enemy();
-  Character.find({ }, function(err, characters) {
-    sess.hero = characters[1];
-    sess.battle = new Battle(sess.hero, enemy)
-    res.redirect('/battle')
-  })
+  secondPlayer = new Enemy();
+  sess.battle = new Battle(sess.hero, secondPlayer)
+  console.log(sess.battle)
+  res.redirect('/battle')
 })
 
 app.get('/battle', function(req, res){
-  var checkEndGame = new EndGame(req.session.battle)
-  if (req.session.battle.outcome == 'won') {
+  var checkEndGame = new EndGame(sess.battle)
+  if (sess.battle.outcome == 'won') {
     res.redirect('/win')
-  } else if (req.session.battle.outcome == 'lost'){
+  } else if (sess.battle.outcome == 'lost'){
     res.redirect('/lose')
   } else {
     res.render('battle/battle', {
-      lastGo: req.session.lastGo,
-      battle: req.session.battle
+      lastGo: sess.lastGo,
+      battle: sess.battle
     })
   }
 })
 
 app.post('/attack', function(req, res) {
-  var attack = new Attack(req.session.battle.firstPlayer, req.session.battle.secondPlayer);
-  req.session.lastGo = attack.outcome
+  var attack = new Attack(sess.battle.firstPlayer, sess.battle.secondPlayer);
+  sess.lastGo = attack.outcome
   res.redirect('/battle')
 })
 
 app.post('/heal', function(req, res) {
-  var heal = new Heal(req.session.battle.firstPlayer);
-  req.session.lastGo = heal.outcome
+  var heal = new Heal(sess.battle.firstPlayer);
+  sess.lastGo = heal.outcome
   res.redirect('/battle')
 })
 

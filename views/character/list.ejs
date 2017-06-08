@@ -12,13 +12,15 @@
 
     {{char.name}}
     <br>
+    xp: {{char.xp}}
+    <br>
     attack: {{char.attack}}
     <br>
     defence: {{char.defence}}
     <br>
     HP: {{char.hp}}
 
-    <form action="/map" method="get">
+    <form action="/choose-character" method="get">
       <input type="hidden" name="id" value="{{char._id}}">
       <input type="submit" value="To Battle">
     </form>
