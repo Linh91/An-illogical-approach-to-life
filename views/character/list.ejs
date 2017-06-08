@@ -12,14 +12,14 @@
 
     {{char.name}}
     <br>
-    {{char.attack}}
+    attack: {{char.attack}}
     <br>
-    {{char.defence}}
+    defence: {{char.defence}}
     <br>
-    {{char.hp}}
+    HP: {{char.hp}}
 
     <form action="/map" method="get">
-      <input type="hidden" value="{{char.id}}">
+      <input type="hidden" name="id" value="{{char._id}}">
       <input type="submit" value="To Battle">
     </form>
 

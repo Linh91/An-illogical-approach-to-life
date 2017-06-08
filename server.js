@@ -95,6 +95,7 @@ app.get('/databaseQuery', function(req, res){
 });
 
 app.get('/map', function(req, res){
+  sess.currentChar = req.query.id
   res.render('battleMap')
 })
 
