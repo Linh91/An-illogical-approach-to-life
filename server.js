@@ -17,6 +17,7 @@ var mongoose = require('mongoose');
 
 var Enemy = require('./src/models/Enemy');
 
+
 const app = express();
 var PORT;
 
@@ -40,6 +41,7 @@ app.use(session({
 }));
 
 app.set('view engine', 'ejs');
+
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', function (req, res) {
@@ -96,9 +98,21 @@ app.get('/character', function(req, res) {
     if (characters.length == 0 ) {
       res.redirect('/character/new')
     } else {
-      res.render('character/list')
+      res.render('character/list', {
+      })
     }
   })
+})
+
+app.get('/databaseQuery', function(req, res){
+  Character.find({ userId : sess.userId }, function(err, characters) {
+    res.json(characters)
+  });
+});
+
+app.get('/map', function(req, res){
+  sess.currentChar = req.query.id
+  res.render('battleMap')
 })
 
 app.post('/create', function(req, res){
@@ -109,7 +123,7 @@ app.post('/create', function(req, res){
    hero.userId = sess.userId
    hero.avatar = 'someshit here';
    hero.save()
-   res.redirect('/character')
+   res.redirect('character')
 })
 
 app.get('/signout', function(req, res) {

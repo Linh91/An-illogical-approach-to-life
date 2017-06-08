@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
-    LIST
+  <body ng-app="characterCreation" ng-controller="character">
+
+    <h1> Character List </h1>
+
+    {{char.name}}
+    <br>
+    attack: {{char.attack}}
+    <br>
+    defence: {{char.defence}}
+    <br>
+    HP: {{char.hp}}
+
+    <form action="/map" method="get">
+      <input type="hidden" name="id" value="{{char._id}}">
+      <input type="submit" value="To Battle">
+    </form>
+
+    <br>
+    <button ng-click="getPrevChar()">Get prev Char</button>
+    <button ng-click="getNextChar()">Get next Char</button>
+    <br>
+
+
+
+    <form action="/character/new" method="get">
+      <input type="submit" value="New Char">
+    </form>
+    <script>
+
+    </script>
+    <script src="../app.js"></script>
+    <script src="../listView.js"></script>
   </body>
 </html>
