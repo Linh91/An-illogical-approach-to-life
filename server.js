@@ -2,17 +2,33 @@ const express = require('express');
 const partials = require('express-partials');
 const morgan = require('morgan');
 const path = require('path')
+var database = require('./config/database.js')
 var User = require('./src/models/User');
+var Attack = require('./src/models/Attack');
+var Heal = require('./src/models/Heal');
 var Character = require('./src/models/Character');
 var Battle = require('./src/models/Battle');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
 var flash = require('connect-flash');
+var mongoose = require('mongoose');
+
+
 var Enemy = require('./src/models/Enemy');
 
 
 const app = express();
+var PORT;
+
+if(process.env.NODE_ENV == 'test'){
+  mongoose.connect(database.test);
+  PORT = 3000;
+}
+else{
+  mongoose.connect(database.dev);
+  PORT = 9000;
+}
 
 app.use(partials());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -110,16 +126,33 @@ app.get('/signout', function(req, res) {
   res.redirect('/')
 })
 
-app.get('/battle', function(req, res){
+app.get('/new-battle', function(req, res){
   sess = req.session
   enemy = new Enemy();
   Character.find({ }, function(err, characters) {
-    battle = new Battle(characters[0], enemy);
-    res.render('battle/battle')
+    sess.battle = new Battle(characters[1], enemy)
+    res.redirect('/battle')
   })
 })
 
-const PORT = process.env.PORT || 9000;
+app.get('/battle', function(req, res){
+    res.render('battle/battle', {
+      lastGo: req.session.lastGo,
+      battle: req.session.battle
+    })
+  })
+
+app.post('/attack', function(req, res) {
+  var attack = new Attack(req.session.battle.firstPlayer, req.session.battle.secondPlayer);
+  req.session.lastGo = attack.outcome
+  res.redirect('/battle')
+})
+
+app.post('/heal', function(req, res) {
+  var heal = new Heal(req.session.battle.firstPlayer);
+  req.session.lastGo = heal.outcome
+  res.redirect('/battle')
+})
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`);

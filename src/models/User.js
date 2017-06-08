@@ -1,9 +1,15 @@
 var mongoose = require('mongoose');
+var db = require('../../config/database.js')
 var Schema = mongoose.Schema;
 
-var testDB = "mongodb://localhost/RPGDB"
-
-mongoose.connect(testDB)
+if(process.env.NODE_ENV == 'test'){
+  mongoose.connect(db.test);
+  PORT = 3000;
+}
+else{
+  mongoose.connect(db.dev);
+  PORT = 9000;
+}
 
 var userSchema = new Schema({
   email: { type: String, unique : true, required : true },

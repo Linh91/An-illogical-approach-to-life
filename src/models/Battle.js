@@ -5,10 +5,7 @@ var Battle = function(player1, player2){
   this.outcome = null
 }
 
-Battle.prototype.attack = function(attacker, defender){
-  defender.hp -= (attacker.attack-(defender.defence/3).toFixed(0))
-  this.checkForEndGame();
-};
+
 
 Battle.prototype.checkForEndGame = function(){
   if(this.secondPlayer.hp <= 0){
