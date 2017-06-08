@@ -175,6 +175,7 @@ app.post('/heal', function(req, res) {
 
 app.get('/win', function(req, res) {
   sess.lastGo = undefined
+  sess.hero.hp = 100
   var reward = new Rewards(sess.hero)
   sess.hero.save();
   res.render('battle/win',{
@@ -183,6 +184,7 @@ app.get('/win', function(req, res) {
 })
 
 app.get('/lose', function(req, res) {
+  sess.hero.hp = 100
   res.render('battle/lose')
 })
 
