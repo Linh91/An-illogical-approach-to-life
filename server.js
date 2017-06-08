@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const path = require('path')
 var database = require('./config/database.js')
 var User = require('./src/models/User');
+var EndGame = require('./src/models/EndGame');
+var Rewards = require('./src/models/Rewards');
 var Attack = require('./src/models/Attack');
 var Heal = require('./src/models/Heal');
 var Character = require('./src/models/Character');
@@ -110,8 +112,20 @@ app.get('/databaseQuery', function(req, res){
   });
 });
 
+app.get('/choose-character', function(req, res){
+  Character.find({ _id : req.query.id }, function(err, character) {
+    sess.hero = character[0]
+    res.redirect('/map')
+  })
+})
+
+app.get('/map', function(req, res){
+    res.render('battleMap')
+})
+
 app.post('/create', function(req, res){
    var hero = new Character();
+   console.log(hero)
    hero.name = req.body.name
    hero.attack = req.body.attack
    hero.defence = req.body.defence
@@ -127,31 +141,49 @@ app.get('/signout', function(req, res) {
 })
 
 app.get('/new-battle', function(req, res){
-  sess = req.session
-  enemy = new Enemy();
-  Character.find({ }, function(err, characters) {
-    sess.battle = new Battle(characters[1], enemy)
-    res.redirect('/battle')
-  })
+  secondPlayer = new Enemy();
+  sess.battle = new Battle(sess.hero, secondPlayer)
+  console.log(sess.battle)
+  res.redirect('/battle')
 })
 
 app.get('/battle', function(req, res){
+  var checkEndGame = new EndGame(sess.battle)
+  if (sess.battle.outcome == 'won') {
+    res.redirect('/win')
+  } else if (sess.battle.outcome == 'lost'){
+    res.redirect('/lose')
+  } else {
     res.render('battle/battle', {
-      lastGo: req.session.lastGo,
-      battle: req.session.battle
+      lastGo: sess.lastGo,
+      battle: sess.battle
     })
-  })
+  }
+})
 
 app.post('/attack', function(req, res) {
-  var attack = new Attack(req.session.battle.firstPlayer, req.session.battle.secondPlayer);
-  req.session.lastGo = attack.outcome
+  var attack = new Attack(sess.battle.firstPlayer, sess.battle.secondPlayer);
+  sess.lastGo = attack.outcome
   res.redirect('/battle')
 })
 
 app.post('/heal', function(req, res) {
-  var heal = new Heal(req.session.battle.firstPlayer);
-  req.session.lastGo = heal.outcome
+  var heal = new Heal(sess.battle.firstPlayer);
+  sess.lastGo = heal.outcome
   res.redirect('/battle')
+})
+
+app.get('/win', function(req, res) {
+  sess.lastGo = undefined
+  var reward = new Rewards(sess.hero)
+  sess.hero.save();
+  res.render('battle/win',{
+    reward: reward
+  })
+})
+
+app.get('/lose', function(req, res) {
+  res.render('battle/lose')
 })
 
 app.listen(PORT, () => {
