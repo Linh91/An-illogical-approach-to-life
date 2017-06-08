@@ -12,7 +12,7 @@ h1 {
   font-size: 350%;
   background-color: #eaa110;
 }
-.btn1 {
+#btn1 {
   background-color: #eaa110;
   border-radius: 10px 10px 10px 10px;
   font-family: 'Amatic SC', cursive;

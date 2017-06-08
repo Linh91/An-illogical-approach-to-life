@@ -5,6 +5,7 @@
   <%- partial('partials/styles') %>
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Exo|Righteous" rel="stylesheet">
   <link rel="stylesheet" href="../global.css">
+  <link href="../hover-min.css" rel="stylesheet">
 
 </head>
 <header>
@@ -24,7 +25,7 @@
   <br>
   <p>You have only 10 attributes between attack and defence to spend</p>
   <span ng-if="attack+defend == 10 && attack*defend > -1">
-    <input class="btn1" type="submit" value="submit">
+    <input id="btn1" class="hvr-buzz" type="submit" value="submit">
 </span>
 
 
