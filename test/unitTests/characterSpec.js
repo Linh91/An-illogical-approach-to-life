@@ -25,8 +25,8 @@ describe('Character', function() {
       expect(characters[0].avatar).toBe('/creature.jpg')
       expect(characters[0].xp).toBe(0)
       expect(characters[0].level).toBe(1)
-      expect(characters[0].attack).toBe(0)
-      expect(characters[0].defence).toBe(0)
+      expect(characters[0].attack).toBe(5)
+      expect(characters[0].defence).toBe(5)
       expect(characters[0].hp).toBe(100)
       done();
     });

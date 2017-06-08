@@ -5,6 +5,7 @@ const path = require('path')
 var database = require('./config/database.js')
 var User = require('./src/models/User');
 var Attack = require('./src/models/Attack');
+var Heal = require('./src/models/Heal');
 var Character = require('./src/models/Character');
 var Battle = require('./src/models/Battle');
 var bodyParser = require('body-parser');
@@ -121,20 +122,26 @@ app.get('/new-battle', function(req, res){
   enemy = new Enemy();
   Character.find({ }, function(err, characters) {
     sess.battle = new Battle(characters[1], enemy)
-    console.log(req.session.battle)
     res.redirect('/battle')
   })
 })
 
 app.get('/battle', function(req, res){
     res.render('battle/battle', {
+      lastGo: req.session.lastGo,
       battle: req.session.battle
     })
   })
 
-app.post('/attack', function(req, res, battle) {
-  console.log(req.session.battle)
+app.post('/attack', function(req, res) {
   var attack = new Attack(req.session.battle.firstPlayer, req.session.battle.secondPlayer);
+  req.session.lastGo = attack.outcome
+  res.redirect('/battle')
+})
+
+app.post('/heal', function(req, res) {
+  var heal = new Heal(req.session.battle.firstPlayer);
+  req.session.lastGo = heal.outcome
   res.redirect('/battle')
 })
 

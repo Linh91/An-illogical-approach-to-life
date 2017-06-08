@@ -14,10 +14,12 @@
     <table>
       <tr>
         <th><img src="/assets/test_sprite.png" alt="hero" class="character"></th>
-        <th width="30%" rowspan="3">
+        <th width="30%" rowspan="2">
           <form class="" action="/attack" method="post">
-            <input type="hidden" name='battle' value={{battle.firstPlayer}}>
             <button type="submit">ATTACK</button>
+          </form>
+          <form class="" action="/heal" method="post">
+            <button type="submit">HEAL</button>
           </form>
       </th>
         <th><img src="/assets/baddie_sprite.png" alt="enemy" class="enemy"></th>
@@ -31,10 +33,15 @@
       <tr>
         <th>
           <p><%= battle.firstPlayer.name %></p>
+          <p>ATT: <%= battle.firstPlayer.attack %></p>
+          <p>DEF: <%= battle.firstPlayer.defence %></p>
           <p>HP: {{p1HP}}</span></p>
         </th>
+        <th><%= lastGo %>
         <th>
           <p><%= battle.secondPlayer.name %></p>
+          <p>ATT: <%= battle.secondPlayer.attack %></p>
+          <p>DEF: <%= battle.secondPlayer.defence %></p>
           <p>HP: {{p2HP}}</span></p>
         </th>
       </tr>
