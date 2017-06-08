@@ -1,0 +1,30 @@
+body {
+  font-family: 'Amatic SC', cursive;
+  font-size: 24px;
+  text-align: center;
+}
+
+table {
+  margin: auto;
+}
+
+h1 {
+  font-size: 350%;
+  background-color: #eaa110;
+}
+.btn1 {
+  background-color: #eaa110;
+  border-radius: 10px 10px 10px 10px;
+  font-family: 'Amatic SC', cursive;
+  font-size: 24px;
+}
+
+.btn1:not([disabled]):hover {
+  background-color: rgba(107, 103, 91, 0.96);
+  color: white;
+}
+
+.btn1[disabled] {
+  color : rgb(187, 187, 187);
+  background-color: rgba(230, 230, 229, 0.96);
+}

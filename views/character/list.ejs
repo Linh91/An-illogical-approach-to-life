@@ -4,6 +4,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Exo|Righteous" rel="stylesheet">
+    <link rel="stylesheet" href="../global.css">
+
     <title></title>
   </head>
   <body ng-app="characterCreation" ng-controller="character">
@@ -22,18 +25,18 @@
 
     <form action="/choose-character" method="get">
       <input type="hidden" name="id" value="{{char._id}}">
-      <input type="submit" value="To Battle">
+      <input class="btn1" type="submit" value="To Battle">
     </form>
 
     <br>
-    <button ng-click="getPrevChar()">Get prev Char</button>
-    <button ng-click="getNextChar()">Get next Char</button>
+    <button class="btn1" ng-click="getPrevChar()">Get prev Char</button>
+    <button class="btn1" ng-click="getNextChar()">Get next Char</button>
     <br>
 
 
 
     <form action="/character/new" method="get">
-      <input type="submit" value="New Char">
+      <input class="btn1" type="submit" value="New Char">
     </form>
     <script>
 
