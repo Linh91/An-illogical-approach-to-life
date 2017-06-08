@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const path = require('path')
 var database = require('./config/database.js')
 var User = require('./src/models/User');
+var Attack = require('./src/models/Attack');
 var Character = require('./src/models/Character');
 var Battle = require('./src/models/Battle');
 var bodyParser = require('body-parser');
@@ -115,13 +116,26 @@ app.get('/signout', function(req, res) {
   res.redirect('/')
 })
 
-app.get('/battle', function(req, res){
+app.get('/new-battle', function(req, res){
   sess = req.session
   enemy = new Enemy();
   Character.find({ }, function(err, characters) {
-    battle = new Battle(characters[0], enemy);
-    res.render('battle/battle')
+    sess.battle = new Battle(characters[1], enemy)
+    console.log(req.session.battle)
+    res.redirect('/battle')
   })
+})
+
+app.get('/battle', function(req, res){
+    res.render('battle/battle', {
+      battle: req.session.battle
+    })
+  })
+
+app.post('/attack', function(req, res, battle) {
+  console.log(req.session.battle)
+  var attack = new Attack(req.session.battle.firstPlayer, req.session.battle.secondPlayer);
+  res.redirect('/battle')
 })
 
 app.listen(PORT, () => {

@@ -1,18 +1,11 @@
-
-    var $ = require("jquery");
-
-
-var Battle = function(player1, player2, window){
+var Battle = function(player1, player2){
   this.firstPlayer = player1
   this.secondPlayer = player2
   this.gameOver = false
   this.outcome = null
 }
 
-Battle.prototype.attack = function(attacker, defender){
-  defender.hp -= (attacker.attack-(defender.defence/3).toFixed(0))
-  this.checkForEndGame();
-};
+
 
 Battle.prototype.checkForEndGame = function(){
   if(this.secondPlayer.hp <= 0){
@@ -21,6 +14,5 @@ Battle.prototype.checkForEndGame = function(){
     this.gameOver = true; this.outcome = 'lost'
   }
 }
-
 
 module.exports = Battle;

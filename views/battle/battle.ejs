@@ -14,7 +14,12 @@
     <table>
       <tr>
         <th><img src="/assets/test_sprite.png" alt="hero" class="character"></th>
-        <th width="150" rowspan="3"></th>
+        <th width="30%" rowspan="3">
+          <form class="" action="/attack" method="post">
+            <input type="hidden" name='battle' value={{battle.firstPlayer}}>
+            <button type="submit">ATTACK</button>
+          </form>
+      </th>
         <th><img src="/assets/baddie_sprite.png" alt="enemy" class="enemy"></th>
       </tr>
       <tr>
