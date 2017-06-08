@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const path = require('path')
 var database = require('./config/database.js')
 var User = require('./src/models/User');
+var EndGame = require('./src/models/EndGame');
+var Rewards = require('./src/models/Rewards');
 var Attack = require('./src/models/Attack');
 var Heal = require('./src/models/Heal');
 var Character = require('./src/models/Character');
@@ -117,6 +119,7 @@ app.get('/map', function(req, res){
 
 app.post('/create', function(req, res){
    var hero = new Character();
+   console.log(hero)
    hero.name = req.body.name
    hero.attack = req.body.attack
    hero.defence = req.body.defence
@@ -135,17 +138,25 @@ app.get('/new-battle', function(req, res){
   sess = req.session
   enemy = new Enemy();
   Character.find({ }, function(err, characters) {
-    sess.battle = new Battle(characters[1], enemy)
+    sess.hero = characters[1];
+    sess.battle = new Battle(sess.hero, enemy)
     res.redirect('/battle')
   })
 })
 
 app.get('/battle', function(req, res){
+  var checkEndGame = new EndGame(req.session.battle)
+  if (req.session.battle.outcome == 'won') {
+    res.redirect('/win')
+  } else if (req.session.battle.outcome == 'lost'){
+    res.redirect('/lose')
+  } else {
     res.render('battle/battle', {
       lastGo: req.session.lastGo,
       battle: req.session.battle
     })
-  })
+  }
+})
 
 app.post('/attack', function(req, res) {
   var attack = new Attack(req.session.battle.firstPlayer, req.session.battle.secondPlayer);
@@ -157,6 +168,19 @@ app.post('/heal', function(req, res) {
   var heal = new Heal(req.session.battle.firstPlayer);
   req.session.lastGo = heal.outcome
   res.redirect('/battle')
+})
+
+app.get('/win', function(req, res) {
+  sess.lastGo = undefined
+  var reward = new Rewards(sess.hero)
+  sess.hero.save();
+  res.render('battle/win',{
+    reward: reward
+  })
+})
+
+app.get('/lose', function(req, res) {
+  res.render('battle/lose')
 })
 
 app.listen(PORT, () => {
