@@ -18,6 +18,11 @@
     <br>
     {{char.hp}}
 
+    <form action="/map" method="get">
+      <input type="hidden" value="{{char.id}}">
+      <input type="submit" value="To Battle">
+    </form>
+
     <br>
     <button ng-click="getPrevChar()">Get prev Char</button>
     <button ng-click="getNextChar()">Get next Char</button>
@@ -33,6 +38,5 @@
     </script>
     <script src="../app.js"></script>
     <script src="../listView.js"></script>
-    <script src="../../src/models/character"></script>
   </body>
 </html>

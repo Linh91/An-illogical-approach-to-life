@@ -94,6 +94,10 @@ app.get('/databaseQuery', function(req, res){
   });
 });
 
+app.get('/map', function(req, res){
+  res.render('battleMap')
+})
+
 app.post('/create', function(req, res){
    var hero = new Character();
    hero.name = req.body.name
