@@ -105,6 +105,7 @@ app.get('/character', function(req, res) {
 
 app.post('/create', function(req, res){
    var hero = new Character();
+   console.log(hero)
    hero.name = req.body.name
    hero.attack = req.body.attack
    hero.defence = req.body.defence
@@ -156,7 +157,8 @@ app.post('/heal', function(req, res) {
 })
 
 app.get('/win', function(req, res) {
-  var reward = new Rewards(req.session.battle.firstPlayer)
+  sess.lastGo = undefined
+  var reward = new Rewards(sess.hero)
   sess.hero.save();
   res.render('battle/win',{
     reward: reward
