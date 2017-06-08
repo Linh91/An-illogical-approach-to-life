@@ -10,8 +10,18 @@
 
     <h1> Character List </h1>
 
-    {{id = <%=characterList%>}}
+    {{char.name}}
+    <br>
+    {{char.attack}}
+    <br>
+    {{char.defence}}
+    <br>
+    {{char.hp}}
 
+    <br>
+    <button ng-click="getPrevChar()">Get prev Char</button>
+    <button ng-click="getNextChar()">Get next Char</button>
+    <br>
 
 
 

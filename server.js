@@ -82,11 +82,17 @@ app.get('/character', function(req, res) {
     if (characters.length == 0 ) {
       res.redirect('/character/new')
     } else {
-      characterList = characters[0]
-      res.render('character/list')
+      res.render('character/list', {
+      })
     }
   })
 })
+
+app.get('/databaseQuery', function(req, res){
+  Character.find({ userId : sess.userId }, function(err, characters) {
+    res.json(characters)
+  });
+});
 
 app.post('/create', function(req, res){
    var hero = new Character();
