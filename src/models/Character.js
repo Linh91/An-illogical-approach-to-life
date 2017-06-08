@@ -2,7 +2,14 @@ var mongoose = require('mongoose');
 var db = require('../../config/database.js')
 var Schema = mongoose.Schema;
 
-mongoose.connect(db.test)
+if(process.env.NODE_ENV == 'test'){
+  mongoose.connect(db.test);
+  PORT = 3000;
+}
+else{
+  mongoose.connect(db.dev);
+  PORT = 9000;
+}
 
 var characterSchema = new Schema({
   name: { type: String, unique : true, required : true },
