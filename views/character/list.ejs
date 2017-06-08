@@ -10,9 +10,10 @@
     <title></title>
   </head>
   <body ng-app="characterCreation" ng-controller="character">
-
+  <div>
+    {{ getCreatedChar() }}
     <h1> Character List </h1>
-
+    {{data.length}}
     {{char.name}}
     <br>
     xp: {{char.xp}}
@@ -22,6 +23,7 @@
     defence: {{char.defence}}
     <br>
     HP: {{char.hp}}
+  </div>
 
     <form action="/choose-character" method="get">
       <input type="hidden" name="id" value="{{char._id}}">
@@ -29,11 +31,19 @@
     </form>
 
     <br>
-    <button class="btn1" ng-click="getPrevChar()">Get prev Char</button>
-    <button class="btn1" ng-click="getNextChar()">Get next Char</button>
+
+    <span ng-if="id > 0">
+      <button class="btn1" ng-click="getPrevChar()">Get prev Char</button>
+    </span>
+
+    <br>
     <br>
 
-
+    <span ng-if="id < data.length-1">
+      <button class="btn1" ng-click="getNextChar()">Get next Char</button>
+    </span>
+    <br>
+    <br>
 
     <form action="/character/new" method="get">
       <input class="btn1" type="submit" value="New Char">
