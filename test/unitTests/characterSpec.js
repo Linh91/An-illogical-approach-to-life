@@ -1,7 +1,8 @@
 process.env.NODE_ENV = 'test'
 var Character = require('../../src/models/Character');
 var assert = require('assert');
-// var mongoose = require('mongoose');
+
+
 
 describe('Character', function() {
 

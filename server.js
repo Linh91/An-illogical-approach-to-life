@@ -16,15 +16,15 @@ var mongoose = require('mongoose');
 var Enemy = require('./src/models/Enemy');
 
 const app = express();
-var dbUrl;
+var PORT;
 
 if(process.env.NODE_ENV == 'test'){
   mongoose.connect(database.test);
-  dbUrl = database.test;
+  PORT = 3000;
 }
 else{
   mongoose.connect(database.dev);
-  dbUrl = database.dev;
+  PORT = 9000;
 }
 
 app.use(partials());
@@ -123,15 +123,6 @@ app.get('/battle', function(req, res){
     res.render('battle/battle')
   })
 })
-
-var PORT;
-
-if(process.env.NODE_ENV == 'test'){
-  PORT = 3000
-}
-else{
-  PORT = 9000
-}
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`);
