@@ -6,6 +6,7 @@ var assert = require('assert');
 var app = require('../server.js')
 var User = require('../src/models/User');
 var Character = require('../src/models/Character')
+var Enemy = require('../src/models/Enemy')
 
 describe('Sign Up', function() {
   const browser = new Browser();
@@ -53,7 +54,7 @@ describe('End to end Tests', function() {
     .fill('defence', 1)
     .pressButton('submit').then(function() {
       assert.ok(browser.success);
-      browser.assert.text('div', 'Character List 1 Captian logic xp: 0 attack: 9 defence: 1 HP: 100')
+      browser.assert.text('div', 'Character List Captian logic xp: 0 attack: 9 defence: 1 HP: 100')
     }).then(done, done);
   });
 
@@ -71,16 +72,19 @@ describe('End to end Tests', function() {
     }).then(done, done);
   });
 
+  it('users can win a battle and will be rewarded', function(done){
+    Enemy[0].hp = 0
+    browser.pressButton('ATTACK').then(function() {
+      assert.ok(browser.success);
+      browser.assert.text('h1', 'YOU WIN');
+    }).then(done, done);
+  });
 
-
-
-
-
-  // it('user can signout when logged in', function(done){
-  //   browser.clickLink('Sign Out').then(function() {
-  //     assert.ok(browser.success);
-  //     browser.assert.text('h2', 'Sign Up or Log In')
-  //   }).then(done, done);
-  // });
+  it('user can signout when logged in', function(done){
+    browser.clickLink('Sign Out').then(function() {
+      assert.ok(browser.success);
+      browser.assert.text('h2', 'Sign Up or Log In')
+    }).then(done, done);
+  });
 
 });
