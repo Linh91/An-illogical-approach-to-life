@@ -167,7 +167,7 @@ app.post('/attack', function(req, res) {
 })
 
 app.post('/heal', function(req, res) {
-  var heal = new Heal(sess.battle.firstPlayer);
+  var heal = new Heal(sess.battle);
   sess.lastGo = heal.outcome
   res.redirect('/battle')
 })

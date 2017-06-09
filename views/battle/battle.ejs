@@ -17,8 +17,8 @@
     <table>
       <tr>
         <th><img src="/assets/test_sprite.png" alt="hero" class="character"></th>
-
         <th width="40%" rowspan="2">
+          <h1>{{hero}}</h1>
           <form action="/attack" method="post" class=<%= battle.turn %>>
             <button class="btn1 hvr-buzz" type="submit">ATTACK</button>
           </form>
@@ -49,7 +49,7 @@
           <p><%= battle.secondPlayer.name %></p>
           <p>ATT: <%= battle.secondPlayer.attack %></p>
           <p>DEF: <%= battle.secondPlayer.defence %></p>
-          <p>HP: {{p2HP}}</span></p>
+          <p>HP: {{p2HP}}</p>
         </th>
       </tr>
     </table>
