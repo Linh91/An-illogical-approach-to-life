@@ -39,14 +39,14 @@
       </tr>
       <tr>
         <th>
-          <p><%= battle.firstPlayer.name %> <%= battle.firstPlayer.xp %></p>
+          <h2><%= battle.firstPlayer.name %> (<%= battle.firstPlayer.xp %>xp)</h2>
           <p>ATT: <%= battle.firstPlayer.attack %></p>
           <p>DEF: <%= battle.firstPlayer.defence %></p>
           <p>HP: {{p1HP}}</span></p>
         </th>
-        <th><%= lastGo %>
+        <th><h2><%= lastGo %></h2>
         <th>
-          <p><%= battle.secondPlayer.name %></p>
+          <h2><%= battle.secondPlayer.name %></h2>
           <p>ATT: <%= battle.secondPlayer.attack %></p>
           <p>DEF: <%= battle.secondPlayer.defence %></p>
           <p>HP: {{p2HP}}</p>
