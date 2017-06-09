@@ -149,6 +149,7 @@ app.post('/new-battle', function(req, res){
 
 app.get('/battle', function(req, res){
   var checkEndGame = new EndGame(sess.battle)
+  console.log(sess.battle.secondPlayer)
   if (sess.battle.outcome == 'won') {
     res.redirect('/win')
   } else if (sess.battle.outcome == 'lost'){
