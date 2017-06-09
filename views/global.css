@@ -94,3 +94,15 @@ h1 {
   color : rgb(187, 187, 187);
   background-color: rgba(230, 230, 229, 0.96);
 }
+
+.rightButt{
+  position: relative;
+  bottom:200px;
+  left:140px;
+}
+
+.leftButt{
+  position: relative;
+  bottom:133px;
+  right:130px;
+}
