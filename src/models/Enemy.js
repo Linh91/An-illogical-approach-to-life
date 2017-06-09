@@ -3,7 +3,7 @@ var Enemy1 = function(){
   this.defence = 7
   this.hp = 100
   this.name = "Bearon"
-  this.avatar = "baddie_sprite.png"
+  this.avatar = "theeye.gif"
 };
 
 var Enemy2 = function(){
@@ -11,7 +11,7 @@ var Enemy2 = function(){
   this.defence = 4
   this.hp = 100
   this.name = "Glalidric"
-  this.avatar = "boss3.gif"
+  this.avatar = "baddie_sprite.png"
 };
 
 var Enemy3 = function(){
@@ -27,7 +27,7 @@ var Enemy4 = function(){
   this.defence = 30
   this.hp = 120
   this.name = "Nydekin"
-  this.avatar = "robot.gif"
+  this.avatar = "boss3.gif"
 };
 
 var Enemy5 = function(){
@@ -35,14 +35,14 @@ var Enemy5 = function(){
   this.defence = 38
   this.hp = 120
   this.name = "Acirar"
-  this.avatar = "robot.gif"
+  this.avatar = "crabaroony.gif"
 };
 var Enemy6 = function(){
   this.attack = 120
   this.defence = 130
   this.hp = 120
   this.name = "Legeiria"
-  this.avatar = "robot.gif"
+  this.avatar = "dragoon.gif"
 };
 
 var Enemies = [
