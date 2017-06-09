@@ -2,6 +2,8 @@ var Enemy1 = function(){
   this.attack = 3
   this.defence = 7
   this.hp = 100
+  this.name = "Bearon"
+  this.avatar = "theeye.gif"
 };
 
 var Enemy2 = function(){

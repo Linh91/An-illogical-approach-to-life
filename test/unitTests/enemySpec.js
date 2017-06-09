@@ -1,9 +1,9 @@
 var Enemies = require('../../src/models/Enemy');
 
 describe('Enemies', function() {
-  var testEnemies = Enemies;
 
   it('is created', function() {
+    var testEnemies = Enemies;
     expect(testEnemies.length).toBe(8)
     expect(testEnemies[0].name).toBe('Bearon')
     expect(testEnemies[2].hp).toBe(100)
