@@ -18,7 +18,7 @@ var flash = require('connect-flash');
 var mongoose = require('mongoose');
 
 
-var Enemies = require('./src/models/Enemy');
+var Enemy = require('./src/models/Enemy');
 
 
 const app = express();
@@ -48,7 +48,6 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', function (req, res) {
-  console.log(Enemies)
   res.render('signup', {
     message: req.flash('wrongPassword').join()
   });
@@ -141,12 +140,11 @@ app.get('/signout', function(req, res) {
   res.redirect('/')
 })
 
-app.post('/new-battle', function(req, res){
-  secondPlayer = Enemies[Object.keys(req.body)[0]]
+app.get('/new-battle', function(req, res){
+  secondPlayer = new Enemy();
   sess.battle = new Battle(sess.hero, secondPlayer)
   res.redirect('/battle')
 })
-
 
 app.get('/battle', function(req, res){
   var checkEndGame = new EndGame(sess.battle)
@@ -169,7 +167,7 @@ app.post('/attack', function(req, res) {
 })
 
 app.post('/heal', function(req, res) {
-  var heal = new Heal(sess.battle);
+  var heal = new Heal(sess.battle.firstPlayer);
   sess.lastGo = heal.outcome
   res.redirect('/battle')
 })
@@ -188,7 +186,7 @@ app.get('/win', function(req, res) {
   res.render('battle/win',{
     reward: reward
   })
-})
+}) 
 
 app.get('/lose', function(req, res) {
   sess.hero.hp = 100

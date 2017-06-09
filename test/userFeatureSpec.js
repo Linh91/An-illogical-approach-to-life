@@ -60,16 +60,18 @@ describe('End to end Tests', function() {
   it('users are taken to battle map after choosing character', function(done){
     browser.pressButton('To Battle').then(function() {
       assert.ok(browser.success);
-      browser.assert.text('a', 'START BATTLE')
+      browser.assert.text('h2', 'Choose Your Destiny');
     }).then(done, done);
   });
 
   it('users can start a new battle', function(done){
-    browser.clickLink('START BATTLE').then(function() {
+    browser.pressButton('ICE KINGDOM').then(function() {
       assert.ok(browser.success);
       browser.assert.text('h1', 'BATTLE');
     }).then(done, done);
   });
+
+
 
 
 
