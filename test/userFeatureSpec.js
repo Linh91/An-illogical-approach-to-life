@@ -59,7 +59,7 @@ describe('End to end Tests', function() {
   });
 
   it('users are taken to battle map after choosing character', function(done){
-    browser.pressButton('To Battle').then(function() {
+    browser.pressButton('To Battle Map').then(function() {
       assert.ok(browser.success);
       browser.assert.text('h2', 'Choose Your Destiny');
     }).then(done, done);
