@@ -6,13 +6,13 @@ var EnemyAttack = function(battle){
   if (chance >= 10) {
     hit = (hit + chance + 20)
     this.defender.hp -= hit
-    this.outcome = 'Your Opponent Got A Critical Hit! ' + hit
+    this.outcome = 'Your Opponent Got A Critical Hit! ' + hit + ' pts'
   } else if (chance <= 2) {
     this.outcome = 'Your Opponent Missed!'
   } else {
     hit = (hit + chance)
     this.defender.hp -= hit
-    this.outcome = 'Your Opponent Got A Hit! ' + hit
+    this.outcome = 'Your Opponent Got A Hit! ' + hit + ' pts'
   }
   battle.turn = 'player1'
 };

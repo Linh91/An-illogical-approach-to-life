@@ -22,19 +22,20 @@ describe('Battle', function(){
 
   var battle = new Battle(player1, player2);
 
-  it('two players can enter a battle', function(){
+  it('battle has player one', function(){
     expect(battle.firstPlayer.name).toEqual("Roy the Bus Driver")
   })
 
-  it('players can attack each other', function(){
-    battle.attack(battle.firstPlayer, battle.secondPlayer)
-    expect(battle.secondPlayer.hp).toEqual(14)
+  it('battle has player two', function(){
+    expect(battle.secondPlayer.name).toEqual("Bob the Builder")
   })
 
-  it('a player will die when he has no more health', function(){
-    battle.firstPlayer.hp = 0
-    battle.secondPlayer.hp = 6
-    battle.attack(battle.firstPlayer, battle.secondPlayer)
-    expect(battle.gameOver).toEqual(true)
+  it('starts with first player', function(){
+    expect(battle.turn).toEqual("player1")
   })
+
+  it('outcome is null', function(){
+    expect(battle.outcome).toEqual(null)
+  })
+
 })
