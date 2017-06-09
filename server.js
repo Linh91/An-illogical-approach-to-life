@@ -149,6 +149,7 @@ app.post('/new-battle', function(req, res){
 
 app.get('/battle', function(req, res){
   var checkEndGame = new EndGame(sess.battle)
+  console.log(sess.battle.secondPlayer)
   if (sess.battle.outcome == 'won') {
     res.redirect('/win')
   } else if (sess.battle.outcome == 'lost'){
@@ -181,6 +182,7 @@ app.post('/enemy-turn', function(req, res) {
 
 app.get('/win', function(req, res) {
   sess.lastGo = undefined
+  sess.battle.secondPlayer = 100
   sess.battle = undefined
   sess.hero.hp = 100
   var reward = new Rewards(sess.hero)
@@ -192,6 +194,7 @@ app.get('/win', function(req, res) {
 
 app.get('/lose', function(req, res) {
   sess.lastGo = undefined
+  sess.battle.secondPlayer = 100
   sess.battle = undefined
   sess.hero.hp = 100
   res.render('battle/lose')
