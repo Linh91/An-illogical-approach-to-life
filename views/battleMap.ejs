@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="stylesheets/animation.css">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Exo|Righteous" rel="stylesheet">
     <link rel="stylesheet" href="./global.css">
+    <link href="./hover-min.css" rel="stylesheet">
 
     <meta charset="utf-8">
     <title></title>
+    <style>
+    body {
+        background-image: url("https://s-media-cache-ak0.pinimg.com/originals/65/57/97/6557978dc45c507fb3a70b8aefebba3c.jpg");
+        background-repeat: no-repeat;
+        background-size: 1400px 750px;
+        /*background-position: 0px 5px;*/
+        background-color: black;
+          }
+
+  </style>
   </head>
   <body>
-    <h1> <a href="/new-battle">START BATTLE</a> </h1>
+    <form action="/new-battle" method="get">
+      <input class="hvr-pulse" id="battle-one" type="submit" value="ICE KINGDOM"></input>
+      <input class="hvr-pulse" id="battle-two" type="submit" value="BLEEDING FOREST"></input>
+      <input class="hvr-pulse" id="battle-three" type="submit" value="CLOUD-TOP PLATEAU"></input>
+      <input class="hvr-pulse" id="battle-four" type="submit" value="ALDGATE"></input>
+    </form>
+    <!-- <h1> <a href="/new-battle">START BATTLE</a> </h1> -->
   </body>
 </html>
