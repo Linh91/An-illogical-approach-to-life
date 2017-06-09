@@ -48,7 +48,6 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', function (req, res) {
-  console.log(Enemies)
   res.render('signup', {
     message: req.flash('wrongPassword').join()
   });
@@ -184,6 +183,7 @@ app.get('/win', function(req, res) {
   sess.lastGo = undefined
   sess.battle = undefined
   sess.hero.hp = 100
+  sess.battle.secondPlayer = 100
   var reward = new Rewards(sess.hero)
   sess.hero.save();
   res.render('battle/win',{
@@ -195,6 +195,7 @@ app.get('/lose', function(req, res) {
   sess.lastGo = undefined
   sess.battle = undefined
   sess.hero.hp = 100
+  sess.battle.secondPlayer = 100
   res.render('battle/lose')
 })
 

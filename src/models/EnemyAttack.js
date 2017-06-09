@@ -2,6 +2,7 @@ var EnemyAttack = function(battle){
   this.attacker = battle.secondPlayer
   this.defender = battle.firstPlayer
   var hit = (this.attacker.attack-(this.defender.defence/3).toFixed(0))
+  if (hit <= 0) { hit = 0 }
   var chance = Math.floor((Math.random() * 10) +1)
   if (chance >= 10) {
     hit = (hit + chance + 20)
