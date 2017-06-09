@@ -11,6 +11,7 @@ var Heal = function(player){
     player.hp += heal
     this.outcome = 'Good Heal! ' + heal
   }
+
 };
 
 module.exports = Heal;
