@@ -10,10 +10,10 @@ table {
 
 h1 {
   font-size: 350%;
-  background-color: #eaa110;
+  background-color: #eaa110 ;
 }
-#btn1 {
-  background-color: #eaa110;
+.btn1 {
+  background-color: #eaa110 ;
   border-radius: 10px 10px 10px 10px;
   font-family: 'Amatic SC', cursive;
   font-size: 24px;
@@ -26,8 +26,9 @@ h1 {
   color: white;
   padding: 3px 15px;
   font-weight: bold;
-  margin: 331px;
-  box-shadow: 5px 5px 5px #033b96;
+  margin: 350px;
+  box-shadow: 5px 5px 5px #033b96 ;
+  border-radius: 50px;
 }
 
 #battle-two {
@@ -37,8 +38,9 @@ h1 {
   color: white;
   padding: 3px 12px;
   font-weight: bold;
-  margin: 278px;
-  box-shadow: 5px 5px 5px #600000;
+  margin: 300px;
+  box-shadow: 5px 5px 5px #7a020e ;
+  border-radius: 50px;
 }
 
 #battle-three {
@@ -48,8 +50,69 @@ h1 {
   color: white;
   padding: 3px 8px;
   font-weight: bold;
-  margin: 360px;
-  box-shadow: 5px 5px 5px #004c05;
+  margin: 380px;
+  box-shadow: 5px 5px 5px #004c05 ;
+  border-radius: 50px;
+}
+
+#battle-four {
+  position: absolute;
+  left: 8%;
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  font-weight: bold;
+  margin: 660px;
+  box-shadow: 5px 5px 5px #89110b ;
+  border-radius: 50px;
+}
+
+#battle-five {
+  position: absolute;
+  left: 52%;
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  font-weight: bold;
+  margin: 475px;
+  box-shadow: 5px 5px 5px #004c05 ;
+  border-radius: 50px;
+}
+
+#battle-six {
+  position: absolute;
+  left: 56%;
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  font-weight: bold;
+  margin: 320px;
+  box-shadow: 5px 5px 5px #043a91 ;
+  border-radius: 50px;
+}
+
+#battle-seven {
+  position: absolute;
+  left: 44%;
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  font-weight: bold;
+  margin: 280px;
+  box-shadow: 5px 5px 5px #0d4222 ;
+  border-radius: 50px;
+}
+
+#battle-eight {
+  position: absolute;
+  left: 35%;
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  font-weight: bold;
+  margin: 165px;
+  box-shadow: 5px 5px 5px #fc5b05 ;
+  border-radius: 50px;
 }
 
 .btn1:not([disabled]):hover {
