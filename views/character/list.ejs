@@ -28,26 +28,26 @@
 
     <form action="/choose-character" method="get">
       <input type="hidden" name="id" value="{{char._id}}">
-      <input id="btn1" class="hvr-buzz" type="submit" value="To Battle">
+      <input class="btn1" class="hvr-buzz" type="submit" value="To Battle">
     </form>
 
     <br>
 
     <span ng-if="id > 0">
-      <button id="btn1" class="hvr-buzz" ng-click="getPrevChar()">Get prev Char</button>
+      <button class="btn1" class="hvr-buzz" ng-click="getPrevChar()">Get prev Char</button>
     </span>
 
     <br>
     <br>
 
     <span ng-if="id < data.length-1">
-      <button id="btn1" class="hvr-buzz" ng-click="getNextChar()">Get next Char</button>
+      <button class="btn1" class="hvr-buzz" ng-click="getNextChar()">Get next Char</button>
     </span>
     <br>
     <br>
 
     <form action="/character/new" method="get">
-      <input id="btn1" class="hvr-buzz" type="submit" value="New Char">
+      <input class="btn1" class="hvr-buzz" type="submit" value="New Char">
     </form>
     <script>
 
