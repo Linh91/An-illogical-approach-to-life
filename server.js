@@ -181,9 +181,9 @@ app.post('/enemy-turn', function(req, res) {
 
 app.get('/win', function(req, res) {
   sess.lastGo = undefined
+  sess.battle.secondPlayer = 100
   sess.battle = undefined
   sess.hero.hp = 100
-  sess.battle.secondPlayer = 100
   var reward = new Rewards(sess.hero)
   sess.hero.save();
   res.render('battle/win',{
@@ -193,9 +193,9 @@ app.get('/win', function(req, res) {
 
 app.get('/lose', function(req, res) {
   sess.lastGo = undefined
+  sess.battle.secondPlayer = 100
   sess.battle = undefined
   sess.hero.hp = 100
-  sess.battle.secondPlayer = 100
   res.render('battle/lose')
 })
 
