@@ -38,7 +38,7 @@ h1 {
   padding: 3px 12px;
   font-weight: bold;
   margin: 278px;
-  box-shadow: 5px 5px 5px #600000;
+  box-shadow: 5px 5px 5px #7a020e;
 }
 
 #battle-three {
@@ -49,6 +49,39 @@ h1 {
   padding: 3px 8px;
   font-weight: bold;
   margin: 360px;
+  box-shadow: 5px 5px 5px #004c05;
+}
+
+#battle-four {
+  position: absolute;
+  left: 8%;
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  font-weight: bold;
+  margin: 600px;
+  box-shadow: 5px 5px 5px #89110b;
+}
+
+#battle-five {
+  position: absolute;
+  left: 55%;
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  font-weight: bold;
+  margin: 430px;
+  box-shadow: 5px 5px 5px #004c05;
+}
+
+#battle-six {
+  position: absolute;
+  left: 56%;
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  font-weight: bold;
+  margin: 300px;
   box-shadow: 5px 5px 5px #004c05;
 }
 
