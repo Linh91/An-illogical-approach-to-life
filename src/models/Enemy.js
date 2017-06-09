@@ -3,6 +3,7 @@ var Bob = function(){
   this.defence = 7
   this.hp = 100
   this.name = "Bob the Builder"
+  this.avatar = "newfliprobot.gif"
 };
 
 var Balthazar = function(){

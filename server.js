@@ -48,7 +48,6 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', function (req, res) {
-  console.log(Enemies)
   res.render('signup', {
     message: req.flash('wrongPassword').join()
   });
@@ -150,6 +149,7 @@ app.post('/new-battle', function(req, res){
 
 app.get('/battle', function(req, res){
   var checkEndGame = new EndGame(sess.battle)
+  console.log(sess.battle.secondPlayer)
   if (sess.battle.outcome == 'won') {
     res.redirect('/win')
   } else if (sess.battle.outcome == 'lost'){
